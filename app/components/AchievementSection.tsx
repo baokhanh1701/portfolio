@@ -1,21 +1,33 @@
-import React from 'react'
+"use client";
+import React from 'react';
+import dynamic from 'next/dynamic';
+import { motion, useInView } from 'framer-motion';
 
+const AnimatedNumbers = dynamic(() => { return import("react-animated-numbers") }, { ssr: false })
 const achievementList = [
     {
+        prefix: "",
         metric: "Projects",
-        value: "10"
+        value: "10",
+        postfix: "+"
     },
     {
-        metric: "Users",
-        value: "100"
+        prefix: "~",
+        metric: "Viewers",
+        value: "50",
+        postfix: ""
     },
     {
+        prefix: "",
         metric: "Awards",
-        value: "2+"
+        value: "2",
+        postfix: "+"
     },
     {
+        prefix: "",
         metric: "Years",
-        value: "1+"
+        value: "1",
+        postfix: ""
     }
 ]
 
@@ -27,8 +39,23 @@ const AchievementSection = () => {
                     achievementList.map((achievement, index) => {
                         return (
                             <div key={index} className="flex flex-col justify-center items-center mx-4">
-                                <h2 className="text-white text-4xl font-bold">
-                                    {achievement.value}
+                                <h2 className="text-white text-4xl font-bold  flex flex-row">
+                                    {achievement.prefix}
+                                    <AnimatedNumbers
+                                        includeComma
+                                        animateToNumber={parseInt(achievement.value)}
+                                        locale='en-us'
+                                        className='text-white text-4xl font-bold'
+                                        configs={(_: any, index: any) => {
+                                            return {
+                                                mass: 1,
+                                                friction: 100,
+                                                tension: 140 * (index + 1),
+                                            }
+                                        }
+                                        }
+                                    />
+                                    {achievement.postfix}
                                 </h2>
                                 <p className="text-[#ADB7BE] text-base">
                                     {achievement.metric}
