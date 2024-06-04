@@ -17,11 +17,11 @@ const config: Config = {
       },
     colors: {
       ...colors,
-      primary: colors.green,
-      secondary: colors.yellow,
+      primary: colors.blue,
+      secondary: colors.green,
       tertiary: colors.indigo,
       quaternary: colors.purple,
-      quinary: colors.pink,
+      quinary: colors.yellow,
       senary: colors.red,
     }
     },
