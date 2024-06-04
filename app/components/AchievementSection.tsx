@@ -1,7 +1,6 @@
 "use client";
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { motion, useInView } from 'framer-motion';
 
 const AnimatedNumbers = dynamic(() => { return import("react-animated-numbers") }, { ssr: false })
 const achievementList = [
@@ -33,7 +32,8 @@ const achievementList = [
 
 const AchievementSection = () => {
     return (
-        <div className='py-8 px-4 xl:gap-16 sm:py-16 xl:px-16'>
+        <div
+            className='py-8 px-4 xl:gap-16 sm:py-16 xl:px-16'>
             <div className='border-[#33353F] border rounded-md py-8 px-17 flex flex-row items-center justify-between'>
                 {
                     achievementList.map((achievement, index) => {
@@ -46,14 +46,6 @@ const AchievementSection = () => {
                                         animateToNumber={parseInt(achievement.value)}
                                         locale='en-us'
                                         className='text-white text-4xl font-bold'
-                                        configs={(_: any, index: any) => {
-                                            return {
-                                                mass: 1,
-                                                friction: 100,
-                                                tension: 140 * (index + 1),
-                                            }
-                                        }
-                                        }
                                     />
                                     {achievement.postfix}
                                 </h2>
