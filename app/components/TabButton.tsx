@@ -20,7 +20,7 @@ const TabButton = ({
     : "text-[#ADB7BE]";
   return (
     <button onClick={selectTab}>
-      <span className={`mr-3 font-semibold hover:text-white ${buttonClasses}`}>
+      <span className={`mr-3 font-semibold hover:text-white duration-200 ${buttonClasses}`}>
         {children}
       </span>
       <motion.div

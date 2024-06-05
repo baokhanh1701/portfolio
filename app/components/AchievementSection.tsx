@@ -7,14 +7,8 @@ const achievementList = [
     {
         prefix: "",
         metric: "Projects",
-        value: "10",
+        value: "4",
         postfix: "+"
-    },
-    {
-        prefix: "~",
-        metric: "Viewers",
-        value: "50",
-        postfix: ""
     },
     {
         prefix: "",

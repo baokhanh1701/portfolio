@@ -1,7 +1,8 @@
 "use client";
-import React, { useTransition, useState } from "react";
+import React, { useTransition, useState, useRef } from "react";
 import Image from "next/image";
 import TabButton from "./TabButton";
+import { motion, useInView } from "framer-motion";
 
 const tab_data = [
   {
@@ -9,9 +10,10 @@ const tab_data = [
     id: "skills",
     content: (
       <ul className="list-disc pl-2">
-        <li>Node.js</li>
+        <li>NodeJS</li>
         <li>React</li>
-        <li>Next.js</li>
+        <li>NextJS</li>
+        <li>TypeScript</li>
         <li>PostgreSQL</li>
       </ul>
     ),
@@ -32,7 +34,8 @@ const tab_data = [
     id: "certificates",
     content: (
       <ul className="list-disc pl-2">
-        <li>Fullstack Developer Certificate - MindX</li>
+        <li>Fullstack Developer Certificate - MindX Technology School</li>
+        <li> Top 100 National Excellent Students of FPT Telecom - Nextgen Leaders 2024</li>
       </ul>
     ),
   },
@@ -40,24 +43,34 @@ const tab_data = [
 
 const AboutSection = () => {
   const [tab, setTab] = useState("skills");
+  const aboutRef = useRef(null)
   const [isPending, startTransition] = useTransition();
-
+  const isAboutInView = useInView(aboutRef, { once: true });
   const handleTabChange = (id: string) => {
     startTransition(() => {
       setTab(id);
     });
   };
   return (
-    <section id="#about">
-      <div className="grid  sm:grid-cols-1 lg:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16">
-        <Image alt="nkbk" src="/nkbk.jpeg" width={500} height={500} />
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
+    <section id="about" className="lg:pt-16">
+      <div ref={aboutRef} className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 items-center py-16 px-4 xl:gap-16 sm:py-16">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={isAboutInView ? { opacity: 1, scale: 1 } : "initial"}
+          transition={{ duration: 0.5 }}
+        >
+          <Image alt="nkbk" src="/nkbk.jpeg" width={500} height={500} />
+        </motion.div>
+        <motion.div
+          initial={{ x: 50, opacity: 0 }}
+          animate={isAboutInView ? { opacity: 1, x: 0 } : "initial"}
+          transition={{ duration: 0.5 }}
+          className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-center text-4xl font-bold mb-4">About Me</h2>
-          <p className="text-base md:text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
-            voluptate ipsum, unde ab earum omnis accusamus quidem praesentium
-            quam soluta voluptatum maiores explicabo odio dolores reiciendis
-            natus obcaecati eligendi harum.
+          <p className="text-base md:text-lg text-pretty">
+            As a dedicated and detail-oriented university undergraduate majoring in Computer Science and with 1 year of experience in SWE,
+            I have my passion towards SWE, Data Analysis, Business Integration, and Scrum/Agile project management.
+            With a keen interest in creating impactful products, I thrive in collaborative team environments.
           </p>
           <div className="flex flex-row justify-start mt-8">
             <TabButton
@@ -85,7 +98,7 @@ const AboutSection = () => {
           <div className="mt-8">
             {tab_data.find((item) => item.id === tab)?.content}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

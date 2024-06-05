@@ -5,11 +5,10 @@ const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 const fromEmail = process.env.fromEmail;
 
 export async function POST(req: any, res: any) {
-  const { body } = await req.json();
-  const { name, email, subject, message } = body;
   try {
+    const { name, email, subject, message } = await req.json();
     const { data, error } = await resend.emails.send({
-      from: "Khanh <knguyenkieubao@gmail.com>",
+      from: `${name} <${email}>`,
       to: ["khanhnkb@gmail.com"],
       subject: "Thank you for your email!",
       react: EmailTemplate({
@@ -21,6 +20,7 @@ export async function POST(req: any, res: any) {
     });
 
     if (error) {
+      console.log(error);
       return Response.json({ error }, { status: 500 });
     }
 
