@@ -66,13 +66,13 @@ const AboutSection = () => {
           animate={isAboutInView ? { opacity: 1, x: 0 } : "initial"}
           transition={{ duration: 0.5 }}
           className="mt-4 md:mt-0 text-left flex flex-col h-full">
-          <h2 className="text-center text-4xl font-bold mb-4">About Me</h2>
-          <p className="text-base md:text-lg text-pretty">
+          <h2 className="text-white text-center text-4xl font-bold mb-4">About Me</h2>
+          <p className="text-white text-base md:text-lg text-pretty">
             As a dedicated and detail-oriented university undergraduate majoring in Computer Science and with 1 year of experience in SWE,
             I have my passion towards SWE, Data Analysis, Business Integration, and Scrum/Agile project management.
             With a keen interest in creating impactful products, I thrive in collaborative team environments.
           </p>
-          <div className="flex flex-row justify-start mt-8">
+          <div className="flex flex-row justify-start mt-8 text-white">
             <TabButton
               selectTab={() => handleTabChange("skills")}
               active={tab === "skills"}
