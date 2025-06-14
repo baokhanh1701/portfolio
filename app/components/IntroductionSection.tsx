@@ -9,14 +9,13 @@ const TypeAnimationSection = () => {
   return (
     <TypeAnimation
       sequence={[
-        // Same substring at the start will only be typed out once, initially
-        "Khanh Nguyen",
+        "Nguyen Kieu Bao Khanh",
         1000,
         "Uni. Student",
-        1000, // wait 1s before replacing "Mice" with "Hamsters"
-        "Sw. Developer",
         1000,
-        "Open for Hire",
+        "Cloud Engineer",
+        1000,
+        "Open for Freelance",
         1000
       ]}
       wrapper="span"
@@ -43,12 +42,11 @@ export default function IntroductionSection() {
           </h1>
           <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
             👋 Hi, I’m @baokhanh1701
-            <br />
-            💞️ I’m interested in Software Engineering and developing usable products.
-            <br />
-            🌱 I’m currently learning Computer Science at Ho Chi Minh University of Technology.
-            <br />
-            👀 I’m looking to collaborate on software projects and web development.
+            <br /> 🎓 CS graduate from Ho Chi Minh University of Technology
+            <br /> ☁️ Currently clouding around as a Cloud Engineer @ NEC Vietnam
+            <br /> 🐛 I break things until they work. Or until I find a bug. Whichever comes first.
+            <br /> 🧪 Passionate about pushing buttons I shouldn’t and enabling features that were never meant to be enabled.
+            <br /> 🧘‍♂️ Deadlines? Oh, you mean those gentle suggestions from the void?
           </p>
           <div>
             <motion.button
@@ -56,9 +54,8 @@ export default function IntroductionSection() {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               className="px-6 py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 hover:bg-slate-200 text-white"
-              >
-                <Link href="https://www.linkedin.com/in/knkb/">Hire Me</Link>
-              
+            >
+              <Link href="https://www.linkedin.com/in/knkb/">Hire Me</Link>
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}

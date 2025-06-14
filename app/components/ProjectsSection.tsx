@@ -6,15 +6,6 @@ import { motion, useInView } from "framer-motion";
 
 const projects_data = [
   {
-    id: "1",
-    title: "Weafore - Weather Forecast Project",
-    description: "ReactJS, NodeJS, AdaFruitIO with custom IoT kits. Outcome project of HCMUT's Multidisciplinary Project Course.",
-    image: "/img/weafore.jpg",
-    git_url: "https://github.com/baokhanh1701/weafore-frontend",
-    preview_url: "https://weafore-frontend.vercel.app/",
-    tag: ["All", "Web"],
-  },
-  {
     id: "2",
     title: "NKBK Portfolio Website",
     description: "NextJS, TaiwindCSS, TypeScript, Framer Motion. Tutored project to learn the basic of NextJS and Web Design.",
@@ -40,16 +31,7 @@ const projects_data = [
     git_url: "/",
     preview_url: "https://recollect-380404.web.app/",
     tag: ["All", "Web"],
-  },
-  {
-    id: "5",
-    title: "Event Easier - A Web App for hosting technical events",
-    description: "MindX Graduation Project - A Web App for hosting events for developers and students, currently not available for preview.",
-    image: "/img/event-easier.jpg",
-    git_url: "https://github.com/event-easier",
-    preview_url: "/",
-    tag: ["All", "Web"],
-  },
+  }
 ];
 
 const ProjectsSection = () => {
@@ -85,11 +67,6 @@ const ProjectsSection = () => {
           name="Web"
           isSelected={tag === "Web"}
         />
-        {/* <ProjectTag
-          onClickFunc={handleTagChange}
-          name="Mobile"
-          isSelected={tag === "Mobile"}
-        /> */}
       </div>
       <ul ref={ref} className="grid gap-8 md:grid-cols-3 md:gap-12">
         {filteredProjects.map((project, index) => (
